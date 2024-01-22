@@ -2,4 +2,5 @@
 plugins {
     id(Plugins.androidApplication) version Versions.androidApplication apply false
     id(Plugins.jetBrainsKotlin) version Versions.jetbrainsKotlinAndroid apply false
+    id(Classpath.hilt) version Versions.hilt apply false
 }

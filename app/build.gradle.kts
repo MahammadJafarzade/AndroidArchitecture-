@@ -1,6 +1,8 @@
 plugins {
     id(Plugins.androidApplication)
     id(Plugins.jetBrainsKotlin)
+    id(Plugins.kotlinKapt)
+    id(Plugins.hilt)
 }
 
 android {
@@ -38,6 +40,8 @@ android {
 dependencies {
 
     implementation(Libs.UI.material)
+    implementation(Libs.Hilt.hilt)
+    kapt(Libs.Hilt.hiltKapt)
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
