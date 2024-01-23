@@ -14,7 +14,7 @@ class SearchListFragment : Fragment() {
     lateinit var binding : FragmentSearchListBinding
     val viewModel : SearchListViewModel by viewModels()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentSearchListBinding.inflate(layoutInflater)
+        binding = FragmentSearchListBinding.inflate(inflater)
         return binding.root
     }
 

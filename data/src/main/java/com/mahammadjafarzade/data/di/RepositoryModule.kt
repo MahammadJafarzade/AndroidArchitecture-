@@ -13,5 +13,5 @@ import javax.inject.Singleton
 abstract class RepositoryModule {
     @Binds
     @Singleton
-    abstract fun provideSearchRepository(repository: FlightRepository) : FlightRepositoryInterface
+    abstract fun providerSearchRepository(repository: FlightRepository) : FlightRepositoryInterface
 }

@@ -60,9 +60,6 @@ object DataLayerModule {
         return client.build()
     }
 
-
-
-
 }
 
 @Qualifier
