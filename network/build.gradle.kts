@@ -36,14 +36,16 @@ android {
 
 dependencies {
     implementation(project(":entities"))
+
     implementation(Libs.Hilt.hilt)
     kapt(Libs.Hilt.hiltKapt)
 
-    implementation(Libs.Api.gson)
     implementation(Libs.Api.retrofit)
     implementation(Libs.Api.retrofitGson)
-    implementation(Libs.Api.okhttpLogging)
     implementation(Libs.Api.okhttp)
+    implementation(Libs.Api.okhttpLogging)
+    implementation(Libs.Api.gson)
+
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")

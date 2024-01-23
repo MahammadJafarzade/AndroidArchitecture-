@@ -10,7 +10,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
 @HiltViewModel
-class SearchListViewModel @Inject constructor(val repositoryInterface: FlightRepositoryInterface) : ViewModel() {
+class SearchListViewModel @Inject constructor(private val repositoryInterface : FlightRepositoryInterface) : ViewModel() {
     val data = MutableLiveData<SearchResponse?>()
     fun getFlights() {
         viewModelScope.launch {

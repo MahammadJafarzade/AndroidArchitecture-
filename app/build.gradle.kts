@@ -39,8 +39,14 @@ android {
 
 dependencies {
 
+    implementation(project(":features:account"))
+    implementation(project(":features:flights"))
+
     implementation(Libs.UI.material)
     implementation(Libs.Hilt.hilt)
+
+    implementation(Libs.Navigation.navigationUi)
+    implementation(Libs.Navigation.navigationFragment)
     kapt(Libs.Hilt.hiltKapt)
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

@@ -17,35 +17,35 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class DataLayerModule {
+object DataLayerModule {
+
     @Provides
     @Singleton
-    fun provideGson(): Gson {
+    fun provideGson() : Gson {
         return Gson()
     }
 
     @Provides
     @Singleton
     @FlightAnnotation
-    fun provideApiCLient(gson: Gson, @FlightAnnotation client: OkHttpClient): Retrofit {
-        val retrofit = Retrofit.Builder()
+    fun provideApiClient(gson: Gson, @FlightAnnotation client: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
             .baseUrl("https://65a7624794c2c5762da692dd.mockapi.io/api/v1/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(client)
             .build()
-        return retrofit
     }
 
     @Provides
     @Singleton
-    fun provideApiService( @FlightAnnotation retrofit: Retrofit): ApiService {
+    fun providerApiService(@FlightAnnotation retrofit: Retrofit) : ApiService {
         return retrofit.create(ApiService::class.java)
     }
 
     @Provides
     @Singleton
     @FlightAnnotation
-    fun provideOkHttpClient() {
+    fun provideOkHttpsClient(): OkHttpClient {
         val client = OkHttpClient.Builder()
 
         val loggingInterceptor = HttpLoggingInterceptor()
@@ -56,8 +56,15 @@ class DataLayerModule {
             .readTimeout(60, TimeUnit.SECONDS)
             .writeTimeout(60, TimeUnit.SECONDS)
             .addInterceptor(loggingInterceptor)
+
+        return client.build()
     }
+
+
+
+
 }
+
 @Qualifier
 @Retention(AnnotationRetention.RUNTIME)
 annotation class FlightAnnotation
