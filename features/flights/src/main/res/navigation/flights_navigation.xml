@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/flights_navigation"
+    app:startDestination="@id/searchListFragment">
+    <fragment
+        android:id="@+id/searchListFragment"
+        android:name="com.mahammadjafarzade.flights.searchList.SearchListFragment"
+        android:label="SearchListFragment" />
+</navigation>
