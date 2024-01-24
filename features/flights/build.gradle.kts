@@ -38,7 +38,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":data"))
+    implementation(project(":domain"))
     implementation(project(":entities"))
 
     implementation(Libs.Hilt.hilt)
