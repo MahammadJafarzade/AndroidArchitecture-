@@ -16,4 +16,9 @@ data class Data(
     val search_url: String,
     val short_search_url: String,
     val stop_counts: List<Int>
-)
+){
+
+    override fun toString(): String {
+        return "Data(airlines=$airlines, airports=$airports, baggages=$baggages, bus_search_data_tab=$bus_search_data_tab, created_at=$created_at, currencies=$currencies, filter_boundaries=$filter_boundaries, flights=$flights, has_vi_flight=$has_vi_flight, info_message=$info_message, price_history=$price_history, search_parameters=$search_parameters, search_url=$search_url, short_search_url=$short_search_url, stop_counts=$stop_counts)"
+    }
+}

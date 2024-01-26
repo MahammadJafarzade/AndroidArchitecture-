@@ -39,6 +39,7 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(project(":common"))
     implementation(project(":entities"))
 
     implementation(Libs.Hilt.hilt)
