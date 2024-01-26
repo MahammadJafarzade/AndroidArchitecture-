@@ -29,7 +29,8 @@ class SearchListViewModel @Inject constructor(
                 is Resource.Loading -> state.emit(State.loading())
                 is Resource.Success -> {
                     state.emit(State.success())
-                    it.data?.data?.let {
+
+                    it.data?.let {
                         val mappedData = mapper.map(it)
                         data.postValue(mappedData)
                     }

@@ -15,7 +15,9 @@ class SearchListUseCase @Inject constructor(
     suspend fun getList() = flow {
         emit(Resource.Loading())
         repository.getFlights()?.data?.let {
-            emit(Resource.Success(mapper.map(it)))
+
+            emit(Resource.Success(it))
+
         } ?: emit(Resource.Error("Empty message error"))
     }.catch {exception ->
         emit(Resource.Error(exception.localizedMessage))
