@@ -2,6 +2,7 @@ package com.mahammadjafarzade.flights.searchList
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.mahammadjafarzade.common.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import com.mahammadjafarzade.common.flowstate.Resource
@@ -18,8 +19,7 @@ import kotlinx.coroutines.flow.collectLatest
 @HiltViewModel
 class SearchListViewModel @Inject constructor(
     val searchUseCase : SearchListUseCase,
-    private val mapper: SearchResponseToUIStateMapper) : ViewModel() {
-    val state : MutableStateFlow<State?> = MutableStateFlow(null)
+    private val mapper: SearchResponseToUIStateMapper) : BaseViewModel() {
     val data = MutableLiveData<FlightSearchUIState?>()
 
     suspend fun getFlights() {
