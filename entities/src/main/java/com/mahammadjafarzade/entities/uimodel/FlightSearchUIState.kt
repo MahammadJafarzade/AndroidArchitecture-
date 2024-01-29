@@ -7,6 +7,7 @@ data class SearchHeaderUiModel(
     val origin : String,
     val destination: String)
 data class FlightListUIModel(
+    var eunid : String,
     var airlineIcon : String,
     var airlineName : String,
     val price : Double )

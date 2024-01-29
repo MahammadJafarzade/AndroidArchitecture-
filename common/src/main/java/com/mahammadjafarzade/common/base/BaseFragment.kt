@@ -15,31 +15,32 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 
-typealias  Inflate<T> = (LayoutInflater,ViewGroup?,Boolean)-> T
-open abstract class BaseFragment<B : ViewBinding, V : BaseViewModel>(private val inflate : Inflate<B>) : Fragment() {
+typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
+open abstract class BaseFragment<B : ViewBinding>(private val inflate : Inflate<B>) : Fragment() {
 
     private lateinit var loadingDialog: LoadingDialog
 
     private var _binding : ViewBinding? = null
-    protected val binding : B
-        get() = _binding as B
+    protected val binding : B get() = _binding as B
 
-   abstract fun mViewModel() : V
+    abstract fun mViewModel() : BaseViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activity?.let {
-            loadingDialog = LoadingDialog(requireActivity())
+            loadingDialog = LoadingDialog(it)
         }
     }
-   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = inflate.invoke(inflater,container,false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        _binding =  inflate.invoke(inflater, container, false)
         return _binding?.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         handleState()
     }
+
     private fun handleState() {
         lifecycleScope.launch {
             mViewModel().state.collectLatest {state->
@@ -53,18 +54,20 @@ open abstract class BaseFragment<B : ViewBinding, V : BaseViewModel>(private val
             }
         }
     }
-    private fun showLoadingProgress(isLoad : Boolean){
-        if(::loadingDialog.isInitialized){
+
+    private fun showLoadingProgress(isLoad : Boolean) {
+        if(::loadingDialog.isInitialized) {
             loadingDialog.apply {
-                if(isLoad){
+                if(isLoad) {
                     if(!isShowing && isAdded)
-                    show()
-                } else{
+                        show()
+                } else {
                     if(isShowing) dismiss()
                 }
             }
         }
     }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

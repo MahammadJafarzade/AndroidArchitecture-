@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/detail_navigation"
+    app:startDestination="@id/searchDetailFragment">
+
+    <fragment
+        android:id="@+id/searchDetailFragment"
+        android:name="com.mahammadjafarzade.searchdetail.SearchDetailFragment"
+        android:label="SearchDetailFragment" >
+
+        <argument
+            android:name="itemId"
+            app:argType="string"
+            app:nullable="true"
+            />
+        <deepLink app:uri="az://search_detail/?itemId={itemId}"></deepLink>
+    </fragment>
+</navigation>

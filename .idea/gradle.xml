@@ -30,6 +30,7 @@
             <option value="$PROJECT_DIR$/features/account" />
             <option value="$PROJECT_DIR$/features/flights" />
             <option value="$PROJECT_DIR$/features/product" />
+            <option value="$PROJECT_DIR$/features/searchDetail" />
             <option value="$PROJECT_DIR$/network" />
           </set>
         </option>

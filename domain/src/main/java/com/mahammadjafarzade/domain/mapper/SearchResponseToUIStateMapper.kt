@@ -21,6 +21,7 @@ class SearchResponseToUIStateMapper @Inject constructor() : BaseMapper<Data, Fli
     private fun Data.getFlights() : List<FlightListUIModel>{
         return flights?.departure?.map{
             FlightListUIModel(
+                it.enuid ?: "",
                 airlineIcon = it.segments.firstOrNull()?.marketing_airline ?:"",
                 airlineName = "",
                 price = 0.0)
